@@ -11,13 +11,17 @@
 
   <div id="menu" class="screen">
     <div class="button-container">
-      <p>問題数を選択してください (1〜60問):</p>
+      <p>問題数を選択してください (1〜60問)</p>
       <select id="question-count-select" class="menu-button">
         </select>
       <button class="menu-button" onclick="startQuiz()">問題開始</button>
       <button class="menu-button" onclick="showQuestionList()">各問題一覧</button>
       <button class="menu-button" onclick="showTextbook()">学習する</button>
       <button class="menu-button" onclick="showPastResults()">過去の結果を見る</button>
+    </div>
+    <div class="exam-info">
+      <p>生成AIパスポート試験は毎年3月、6月、10月</p>
+      <p><a href="https://guga.or.jp/generativeaiexam/" target="_blank">詳細はこちら</a></p>
     </div>
   </div>
 
@@ -29,35 +33,29 @@
     <div id="question-text"></div>
     <div id="choices"></div>
     <div class="quiz-navigation">
-      <button id="prev-button" onclick="prevQuestion()">前の問題</button>
+      <button id="prev-button" onclick="prevQuestion()" disabled>前の問題</button>
       <button id="next-button" onclick="nextQuestion()">次の問題</button>
-      <button id="submit-quiz" onclick="submitQuiz()" style="display:none;">採点する</button>
-    </div>
+     </div>
   </div>
 
   <div id="results" class="screen" style="display:none">
-    <h2>クイズ結果</h2>
+    <h2>結果</h2>
     <div id="results-summary"></div>
     <div id="results-details"></div>
-    <div class="results-buttons">
-      <button class="menu-button" onclick="backToMenuFromResult()">メニューに戻る</button>
-    </div>
+    <button class="back-button" onclick="backToMenuFromResult()">最初の画面に戻る</button>
   </div>
 
   <div id="past-results" class="screen" style="display:none;">
     <h2>過去の結果</h2>
     <button class="back-button" onclick="backToMenuFromPastResults()">最初の画面に戻る</button>
-    <button class="clear-results-button" onclick="clearAllResults()">過去の結果を全て削除</button>
-    <div id="past-results-list">
-      </div>
-    <div id="past-results-details">
-      </div>
+    <button class="clear-results-button" onclick="clearResults()">全履歴を削除</button>
+    <div id="past-results-list"></div>
+    <div id="past-results-details"></div>
   </div>
 
   <div id="question-list" class="screen" style="display:none;">
     <h2>問題一覧</h2>
     <button class="back-button" onclick="backToMenuFromQuestionList()">最初の画面に戻る</button>
-    
     <div id="breadcrumb" class="breadcrumb"></div>
 
     <div id="chapter-list" class="list-container">
@@ -70,21 +68,21 @@
     </div>
     
     <div id="subsection-list" class="list-container" style="display:none">
-      <button class="back-button" onclick="backToSectionList()">大項目一覧に戻る</button>
+      <button class="back-button" onclick="backToSectionList()">中項目一覧に戻る</button>
       <div class="button-grid"></div>
     </div>
     
     <div id="learning-item-list" class="list-container" style="display:none">
-      <button class="back-button" onclick="backToSubsectionList()">中項目一覧に戻る</button>
+      <button class="back-button" onclick="backToSubsectionList()">小項目一覧に戻る</button>
       <div class="button-grid"></div>
     </div>
     
-    <div id="question-detail-list" class="list-container" style="display:none">
+    <div id="question-detail-list" class="list-container" style="display:none;">
       <button class="back-button" onclick="backToLearningItemList()">学習項目一覧に戻る</button>
       <div class="button-grid"></div>
     </div>
-    
-    <div id="question-detail" class="list-container" style="display:none">
+
+    <div id="question-detail" class="list-container" style="display:none;">
       <button class="back-button" onclick="backToQuestionDetailList()">問題一覧に戻る</button>
       <div id="question-detail-content"></div>
     </div>
@@ -117,11 +115,11 @@
     </div>
   </div>
 
-  <script src="questions.js"></script>
   <script src="utils.js"></script>
-  <script src="pastResults.js"></script>
-  <script src="quiz.js"></script>
+  <script src="questions.js"></script>
   <script src="textbookContent.js"></script>
+  <script src="quiz.js"></script>
+  <script src="pastResults.js"></script>
   <script src="questionList.js"></script>
   <script src="main.js"></script>
 </body>
